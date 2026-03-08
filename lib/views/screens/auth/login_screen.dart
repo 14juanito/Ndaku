@@ -6,6 +6,7 @@ import '../../../controllers/auth_controller.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/routing/app_router.dart';
 import '../../../core/utils/validators.dart';
+import '../../widgets/app_logo.dart';
 import '../../widgets/app_snackbar.dart';
 import '../../widgets/loading_overlay.dart';
 
@@ -40,8 +41,10 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.all(16),
           child: Form(
             key: _formKey,
-            child: Column(
+            child: ListView(
               children: [
+                const Center(child: AppLogo(size: 84, showLabel: false)),
+                const SizedBox(height: 16),
                 TextFormField(
                   controller: _emailController,
                   validator: Validators.email,

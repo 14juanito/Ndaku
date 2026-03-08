@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../controllers/auth_controller.dart';
 import '../../../core/utils/validators.dart';
+import '../../widgets/app_logo.dart';
 import '../../widgets/app_snackbar.dart';
 import '../../widgets/loading_overlay.dart';
 
@@ -38,8 +39,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           padding: const EdgeInsets.all(16),
           child: Form(
             key: _formKey,
-            child: Column(
+            child: ListView(
               children: [
+                const Center(child: AppLogo(size: 84, showLabel: false)),
+                const SizedBox(height: 16),
                 TextFormField(
                   controller: _nameController,
                   validator: (value) =>

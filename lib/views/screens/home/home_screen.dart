@@ -8,6 +8,7 @@ import '../../../controllers/session_controller.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/routing/app_router.dart';
 import '../../../models/property_filter.dart';
+import '../../widgets/app_logo.dart';
 import '../../widgets/filter_bottom_sheet.dart';
 import '../../widgets/loading_overlay.dart';
 import '../../widgets/property_card.dart';
@@ -39,6 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
       isLoading: propertyController.isLoading,
       child: Scaffold(
         appBar: AppBar(
+          leading: const Padding(
+            padding: EdgeInsets.all(8),
+            child: AppLogo(size: 28, showLabel: false),
+          ),
           title: const Text('Biens immobiliers'),
           actions: [
             IconButton(
