@@ -83,7 +83,9 @@ GoRouter createRouter(SessionController sessionController) {
       ),
       GoRoute(
         path: AppRoutes.map,
-        builder: (context, state) => const KinshasaMapScreen(),
+        builder: (context, state) => KinshasaMapScreen(
+          propertyId: state.uri.queryParameters['propertyId'],
+        ),
       ),
       GoRoute(
         path: AppRoutes.profile,

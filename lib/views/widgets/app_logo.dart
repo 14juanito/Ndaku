@@ -47,7 +47,7 @@ class _AppLogoPainter extends CustomPainter {
     final h = size.height;
 
     final orange = Paint()
-      ..color = AppColors.primary
+      ..color = AppColors.logoOrange
       ..style = PaintingStyle.fill;
     final black = Paint()
       ..color = Colors.black

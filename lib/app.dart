@@ -91,6 +91,7 @@ class _NdakuAppState extends State<NdakuApp> {
         mapController: _mapController,
       ),
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         title: 'Ndaku',
         theme: AppTheme.lightTheme,
         routerConfig: _router,

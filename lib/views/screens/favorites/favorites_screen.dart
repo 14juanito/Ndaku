@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../controllers/favorites_controller.dart';
 import '../../../controllers/property_controller.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../../core/routing/app_router.dart';
 import '../../widgets/property_card.dart';
 
@@ -14,17 +15,25 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final favorites = context.watch<FavoritesController>().favorites;
     final properties = context.watch<PropertyController>().properties;
-    final favoritePropertyIds = favorites.map((fav) => fav.propertyId).toSet();
+    final favoriteIds = favorites.map((fav) => fav.propertyId).toSet();
     final favoriteProperties = properties
-        .where((p) => favoritePropertyIds.contains(p.id))
+        .where((property) => favoriteIds.contains(property.id))
         .toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Favoris')),
+      backgroundColor: AppColors.background,
+      appBar: AppBar(title: const Text('Favorites')),
       body: favoriteProperties.isEmpty
-          ? const Center(child: Text('Aucun favori pour le moment.'))
+          ? Center(
+              child: Text(
+                'No favorite property yet.',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.textSecondary,
+                ),
+              ),
+            )
           : ListView.separated(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(22),
               itemBuilder: (context, index) {
                 final item = favoriteProperties[index];
                 return PropertyCard(

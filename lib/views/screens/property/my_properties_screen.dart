@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../controllers/property_controller.dart';
 import '../../../controllers/session_controller.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../widgets/property_card.dart';
 
 class MyPropertiesScreen extends StatelessWidget {
@@ -11,21 +12,29 @@ class MyPropertiesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final session = context.watch<SessionController>();
-    final all = context.watch<PropertyController>().properties;
-    final mine = all
+    final allProperties = context.watch<PropertyController>().properties;
+    final myProperties = allProperties
         .where((item) => item.ownerId == session.currentUser?.id)
         .toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Mes annonces')),
-      body: mine.isEmpty
-          ? const Center(child: Text('Aucune annonce publiee.'))
+      backgroundColor: AppColors.background,
+      appBar: AppBar(title: const Text('My Listings')),
+      body: myProperties.isEmpty
+          ? Center(
+              child: Text(
+                'Your published properties will appear here.',
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.textSecondary,
+                ),
+              ),
+            )
           : ListView.separated(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(22),
               itemBuilder: (context, index) =>
-                  PropertyCard(property: mine[index]),
+                  PropertyCard(property: myProperties[index]),
               separatorBuilder: (context, index) => const SizedBox(height: 12),
-              itemCount: mine.length,
+              itemCount: myProperties.length,
             ),
     );
   }

@@ -7,6 +7,6 @@ void main() {
     await tester.pumpWidget(const NdakuApp(firebaseReady: false));
     await tester.pumpAndSettle();
 
-    expect(find.text('Connexion'), findsOneWidget);
+    expect(find.text('Welcome back'), findsOneWidget);
   });
 }

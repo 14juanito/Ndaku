@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../core/mock/mock_properties.dart';
 import '../../models/property.dart';
 import '../../models/property_filter.dart';
 
@@ -101,7 +102,7 @@ class FirebasePropertyFirestoreService implements PropertyFirestoreService {
 }
 
 class InMemoryPropertyFirestoreService implements PropertyFirestoreService {
-  final List<Property> _items = [];
+  final List<Property> _items = List<Property>.of(kMockProperties);
   final StreamController<List<Property>> _controller =
       StreamController<List<Property>>.broadcast();
 

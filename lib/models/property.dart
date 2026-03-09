@@ -13,9 +13,23 @@ class Property {
     required this.address,
     required this.latitude,
     required this.longitude,
+    this.subtitle,
+    this.listingLabel,
+    this.priceSuffix,
+    this.rating,
     this.surfaceM2,
     this.rooms,
     this.bathrooms,
+    this.builtYear,
+    this.livingRooms,
+    this.parkingSpots,
+    this.agentName,
+    this.agentRole,
+    this.agentAvatar,
+    this.reviewCount,
+    this.reviewAuthor,
+    this.reviewAvatar,
+    this.reviewText,
     this.images = const [],
     this.isAvailable = true,
   });
@@ -33,9 +47,23 @@ class Property {
   final String address;
   final double latitude;
   final double longitude;
+  final String? subtitle;
+  final String? listingLabel;
+  final String? priceSuffix;
+  final double? rating;
   final double? surfaceM2;
   final int? rooms;
   final int? bathrooms;
+  final int? builtYear;
+  final int? livingRooms;
+  final int? parkingSpots;
+  final String? agentName;
+  final String? agentRole;
+  final String? agentAvatar;
+  final int? reviewCount;
+  final String? reviewAuthor;
+  final String? reviewAvatar;
+  final String? reviewText;
   final List<String> images;
   final bool isAvailable;
 
@@ -53,9 +81,23 @@ class Property {
     String? address,
     double? latitude,
     double? longitude,
+    String? subtitle,
+    String? listingLabel,
+    String? priceSuffix,
+    double? rating,
     double? surfaceM2,
     int? rooms,
     int? bathrooms,
+    int? builtYear,
+    int? livingRooms,
+    int? parkingSpots,
+    String? agentName,
+    String? agentRole,
+    String? agentAvatar,
+    int? reviewCount,
+    String? reviewAuthor,
+    String? reviewAvatar,
+    String? reviewText,
     List<String>? images,
     bool? isAvailable,
   }) {
@@ -73,9 +115,23 @@ class Property {
       address: address ?? this.address,
       latitude: latitude ?? this.latitude,
       longitude: longitude ?? this.longitude,
+      subtitle: subtitle ?? this.subtitle,
+      listingLabel: listingLabel ?? this.listingLabel,
+      priceSuffix: priceSuffix ?? this.priceSuffix,
+      rating: rating ?? this.rating,
       surfaceM2: surfaceM2 ?? this.surfaceM2,
       rooms: rooms ?? this.rooms,
       bathrooms: bathrooms ?? this.bathrooms,
+      builtYear: builtYear ?? this.builtYear,
+      livingRooms: livingRooms ?? this.livingRooms,
+      parkingSpots: parkingSpots ?? this.parkingSpots,
+      agentName: agentName ?? this.agentName,
+      agentRole: agentRole ?? this.agentRole,
+      agentAvatar: agentAvatar ?? this.agentAvatar,
+      reviewCount: reviewCount ?? this.reviewCount,
+      reviewAuthor: reviewAuthor ?? this.reviewAuthor,
+      reviewAvatar: reviewAvatar ?? this.reviewAvatar,
+      reviewText: reviewText ?? this.reviewText,
       images: images ?? this.images,
       isAvailable: isAvailable ?? this.isAvailable,
     );
@@ -95,9 +151,23 @@ class Property {
       'address': address,
       'latitude': latitude,
       'longitude': longitude,
+      'subtitle': subtitle,
+      'listingLabel': listingLabel,
+      'priceSuffix': priceSuffix,
+      'rating': rating,
       'surfaceM2': surfaceM2,
       'rooms': rooms,
       'bathrooms': bathrooms,
+      'builtYear': builtYear,
+      'livingRooms': livingRooms,
+      'parkingSpots': parkingSpots,
+      'agentName': agentName,
+      'agentRole': agentRole,
+      'agentAvatar': agentAvatar,
+      'reviewCount': reviewCount,
+      'reviewAuthor': reviewAuthor,
+      'reviewAvatar': reviewAvatar,
+      'reviewText': reviewText,
       'images': images,
       'isAvailable': isAvailable,
     };
@@ -118,13 +188,29 @@ class Property {
       address: (map['address'] as String?) ?? '',
       latitude: ((map['latitude'] as num?) ?? 0).toDouble(),
       longitude: ((map['longitude'] as num?) ?? 0).toDouble(),
+      subtitle: map['subtitle'] as String?,
+      listingLabel: map['listingLabel'] as String?,
+      priceSuffix: map['priceSuffix'] as String?,
+      rating: (map['rating'] as num?)?.toDouble(),
       surfaceM2: (map['surfaceM2'] as num?)?.toDouble(),
-      rooms: map['rooms'] as int?,
-      bathrooms: map['bathrooms'] as int?,
+      rooms: (map['rooms'] as num?)?.toInt(),
+      bathrooms: (map['bathrooms'] as num?)?.toInt(),
+      builtYear: (map['builtYear'] as num?)?.toInt(),
+      livingRooms: (map['livingRooms'] as num?)?.toInt(),
+      parkingSpots: (map['parkingSpots'] as num?)?.toInt(),
+      agentName: map['agentName'] as String?,
+      agentRole: map['agentRole'] as String?,
+      agentAvatar: map['agentAvatar'] as String?,
+      reviewCount: (map['reviewCount'] as num?)?.toInt(),
+      reviewAuthor: map['reviewAuthor'] as String?,
+      reviewAvatar: map['reviewAvatar'] as String?,
+      reviewText: map['reviewText'] as String?,
       images: (map['images'] as List<dynamic>? ?? const [])
           .map((e) => e.toString())
           .toList(),
       isAvailable: (map['isAvailable'] as bool?) ?? true,
     );
   }
+
+  String get heroImage => images.isNotEmpty ? images.first : '';
 }
